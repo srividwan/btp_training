@@ -1,0 +1,9 @@
+code,name,author
+505,Advanced Mathematics,Grewal
+506,Calculus Made Easy,Silvanus P
+507,Introduction to Linear Algebra,StrangINSERT INTO ust_demo_master_books (code, name, author)
+VALUES (
+    'code:NVARCHAR(4)',
+    'name:NVARCHAR(10)',
+    'author:NVARCHAR(50)'
+  );
