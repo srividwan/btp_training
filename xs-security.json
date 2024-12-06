@@ -1,53 +1,47 @@
 {
-  "xsappname": "mycapapp",
-  "tenant-mode": "dedicated",
   "scopes": [
     {
       "name": "$XSAPPNAME.Viewer",
-      "description": "someone can view data using this scope"
+      "description": "Viewer"
     },
     {
       "name": "$XSAPPNAME.Admin",
-      "description": "someone can perform CURD on data using this scope"
+      "description": "Admin"
     }
   ],
   "attributes": [
     {
       "name": "BankName",
-      "description": "Bank Name property",
-      "valueType": "string"
+      "description": "BankName",
+      "valueType": "s",
+      "valueRequired": false
     }
   ],
   "role-templates": [
     {
       "name": "Viewer",
-      "description": "View all data from our Catalog service",
-      "default-role-name": "Viewer: Authorized to Read All Data",
+      "description": "generated",
       "scope-references": [
         "$XSAPPNAME.Viewer"
       ],
-      "attribute-references": [
-        {
-          "name": "BankName"
-        }
-      ]
+      "attribute-references": []
     },
     {
       "name": "Admin",
-      "description": "Edit, delete all data from service",
+      "description": "generated",
       "scope-references": [
         "$XSAPPNAME.Admin"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "userattributes",
+      "description": "generated",
+      "default-role-name": "Attributes of a User",
+      "scope-references": [],
+      "attribute-references": [
+        "BankName"
       ]
     }
-  ],
-  "authorities": [
-    "$ACCEPT_GRANTED_AUTHORITIES"
-  ],
-  "oauth2-configuration": {
-    "token-validity": 9000,
-    "redirect-uris": [
-      "https://*.cfapps.us10-001.hana.ondemand.com/login/callback"
-    ]
-  },
-  "xsenableasyncservice": "true"
+  ]
 }
