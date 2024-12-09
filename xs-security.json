@@ -1,4 +1,6 @@
 {
+  "xsappname":"mycapapp",
+  "tenant-mode":"dedicated",
   "scopes": [
     {
       "name": "$XSAPPNAME.Viewer",
