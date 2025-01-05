@@ -1,0 +1,85 @@
+###
+//Get the service document
+http://localhost:4004/odata/v4/CatalogService
+###
+http://localhost:4004/odata/v4/CatalogService/$metadata
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+###
+//get the total count of all employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&skip=2
+###
+### filter
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=bankId eq '510000655'
+### pattern based
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(bankName,'Ant')
+### select particular column data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=ID,nameFirst,email
+### Get the data from cdsview
+http://localhost:4004/odata/v4/CatalogService/Products
+### load single product data
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB6052
+### Get order data where this product is used - lazy loading
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB6052/To_Items
+
+### if we want product and its item data together
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB6052?$expand=To_Items
+### create an employee using post call
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Srividwan Reddy",
+      "nameMiddle": null,
+      "nameLast": "Spring",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "E",
+      "phoneNumber": "+919550396381",
+      "email": "srividwan94@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 55549,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "Bank of America"
+}
+### Update the created entry
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/cc3e47bd-48e3-48fa-8ab7-5638b828ecbe
+Content-Type: application/json
+
+{
+      
+      "email": "srividwan95@gmail.com",
+      "loginName": "SPRINGS",
+      "Currency_code": "EUR",
+      "salaryAmount": 1000000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "Bank of Telangana"
+}
+### Delete the entry
+DELETE  http://localhost:4004/odata/v4/CatalogService/EmployeeSet/4020a476-f499-4153-8dd8-8077a88a0bd2
+Content-Type: application/json
+### GET call to check deleted entry
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/4020a476-f499-4153-8dd8-8077a88a0bd2
+### Get all POs
+http://localhost:4004/odata/v4/CatalogService/POs
+### load single PO
+http://localhost:4004/odata/v4/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1978999
+### load single PO
+http://localhost:4004/odata/v4/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1978999
+
+###boost action
+POST http://localhost:4004/odata/v4/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1978999/CatalogService.boost
+Content-Type: application/json
+
+
+{}
+### function 
+http://localhost:4004/odata/v4/CatalogService/largestOrder()
+
